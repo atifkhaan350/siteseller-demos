@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syrian Dinner — Home-Cooked Syrian Food, Aberystwyth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --amber:#e8943c; --amber2:#f7c98b; --ink:#15100b; }
+  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+  body { background:#15100b; color:#f7f2ec; font-family:'Poppins',Arial,sans-serif; overflow-x:hidden; }
+  h1,h2,.display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:2px; }
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background:url('https://media.base44.com/images/public/69fe337f9b337a96768da0fd/7e770b8b6_generated_image.png') center/cover; animation:slowzoom 18s ease-in-out infinite alternate; }
+  @keyframes slowzoom { from{transform:scale(1)} to{transform:scale(1.12)} }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,10,5,.5) 0%, rgba(15,10,5,.85) 100%); }
+  .hero > * { position:relative; z-index:2; }
+  .kicker { display:inline-block; border:1px solid var(--amber); color:var(--amber2); padding:8px 20px; border-radius:50px; font-size:.8rem; letter-spacing:4px; text-transform:uppercase; animation:fadeDown 1s .2s both; }
+  .hero h1 { font-size:clamp(3rem, 13vw, 7.5rem); line-height:1; margin:18px 0 6px; background:linear-gradient(90deg,var(--amber),#fff,var(--amber2),var(--amber)); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 5s linear infinite, fadeDown 1s .4s both; }
+  @keyframes shine { to { background-position:300% 0; } }
+  @keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:none} }
+  .hero p.tag { font-size:1.15rem; color:#f0e8de; max-width:480px; margin:10px auto 30px; animation:fadeDown 1s .6s both; }
+  .btn { display:inline-block; background:linear-gradient(135deg,var(--amber),#c26a1c); color:#1a120a; font-weight:800; padding:18px 36px; border-radius:50px; text-decoration:none; font-size:1.05rem; box-shadow:0 10px 30px rgba(232,148,60,.4); transition:transform .25s, box-shadow .25s; animation:fadeDown 1s .8s both; }
+  .btn:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 40px rgba(232,148,60,.6); }
+  .btn.ghost { background:transparent; color:#fff; border:2px solid var(--amber); box-shadow:none; animation:fadeDown 1s 1s both; }
+  .hero .note { margin-top:20px; color:#e5d9c8; font-size:.9rem; animation:fadeDown 1s 1.2s both; }
+  .marquee { background:var(--amber); overflow:hidden; white-space:nowrap; padding:12px 0; }
+  .marquee span { display:inline-block; font-family:'Bebas Neue'; font-size:1.3rem; letter-spacing:3px; color:#1a120a; animation:slide 22s linear infinite; }
+  @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  section { padding:80px 24px; max-width:1000px; margin:auto; }
+  .sec-title { font-size:2.6rem; text-align:center; margin-bottom:12px; }
+  .sec-title .hl { color:var(--amber2); }
+  .sec-sub { text-align:center; color:#b8a68e; margin-bottom:44px; }
+  .reveal { opacity:0; transform:translateY(40px); transition:all .8s ease; }
+  .reveal.show { opacity:1; transform:none; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .card { position:relative; border-radius:18px; overflow:hidden; min-height:280px; display:flex; align-items:flex-end; border:1px solid #3a2e1e; transition:transform .35s, border-color .35s; }
+  .card:hover { transform:translateY(-8px); border-color:var(--amber); }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+  .card:hover img { transform:scale(1.08); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(12,8,4,.85)); }
+  .card .info { position:relative; padding:20px; width:100%; }
+  .card h3 { font-size:1.5rem; letter-spacing:1px; color:#fff; }
+  .card p { color:#e0d3c0; font-size:.9rem; margin-top:4px; }
+  .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
+  .gallery img { width:100%; height:190px; object-fit:cover; border-radius:12px; transition:transform .5s, filter .5s; cursor:pointer; }
+  .gallery img:hover { transform:scale(1.06); filter:brightness(1.15); }
+  .story { background:#1c1610; border:1px solid #3a2e1e; border-radius:18px; padding:34px; max-width:640px; margin:auto; line-height:1.7; color:#e8ddd0; font-size:1.02rem; }
+  .story .quote { font-family:'Bebas Neue'; font-size:2.2rem; color:var(--amber); line-height:0; display:block; margin-bottom:14px; }
+  .steps { max-width:520px; margin:auto; counter-reset:s; }
+  .step { background:#1c1610; border:1px solid #3a2e1e; border-radius:16px; padding:22px 22px 22px 76px; margin-bottom:14px; position:relative; transition:transform .3s, border-color .3s; }
+  .step:hover { transform:translateX(8px); border-color:var(--amber); }
+  .step::before { counter-increment:s; content:counter(s); position:absolute; left:20px; top:50%; transform:translateY(-50%); background:linear-gradient(135deg,var(--amber),#c26a1c); font-family:'Bebas Neue'; font-size:1.6rem; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:12px; color:#1a120a; }
+  .step h3 { font-size:1.15rem; margin-bottom:4px; }
+  .step p { color:#c9b8a2; font-size:.92rem; }
+  .contact-card { background:#1c1610; border:1px solid #3a2e1e; border-radius:18px; padding:30px; text-align:center; margin-top:34px; }
+  .contact-card p.addr { color:#c9b8a2; margin-bottom:18px; font-size:1.05rem; }
+  .float { position:fixed; bottom:22px; right:22px; background:linear-gradient(135deg,var(--amber),#c26a1c); color:#1a120a; font-weight:800; padding:16px 24px; border-radius:50px; text-decoration:none; box-shadow:0 12px 30px rgba(232,148,60,.5); z-index:50; animation:pulse2 2.4s infinite; }
+  @keyframes pulse2 { 0%,100%{box-shadow:0 12px 30px rgba(232,148,60,.4)} 50%{box-shadow:0 12px 44px rgba(232,148,60,.8)} }
+  footer { text-align:center; padding:44px 24px 90px; color:#8a7a63; font-size:.85rem; border-top:1px solid #2b2318; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bg"></div>
+  <span class="kicker">Aberystwyth · Home-Cooked</span>
+  <h1>SYRIAN<br>DINNER</h1>
+  <p class="tag">Real Syrian home cooking. Made with love, shared with friends.</p>
+  <div>
+    <a class="btn" href="mailto:syriandinner.uk@gmail.com?subject=Order%20enquiry">📧 Email to order</a>
+    <a class="btn ghost" href="tel:07488554220">📞 07488 554220</a>
+  </div>
+  <p class="note">Please order two days in advance, so everything is perfect.</p>
+</div>
+
+<div class="marquee"><span>Fresh Mezze 🥗 &nbsp;·&nbsp; Vine Leaves 🍃 &nbsp;·&nbsp; Warm Flatbread 🫓 &nbsp;·&nbsp; Home Cooking ❤️ &nbsp;·&nbsp; Takeaway &amp; Events 🎉 &nbsp;·&nbsp; Fresh Mezze 🥗 &nbsp;·&nbsp; Vine Leaves 🍃 &nbsp;·&nbsp; Warm Flatbread 🫓 &nbsp;·&nbsp; Home Cooking ❤️ &nbsp;·&nbsp; Takeaway &amp; Events 🎉 &nbsp;·&nbsp; </span></div>
+
+<section>
+  <h2 class="sec-title reveal">OUR <span class="hl">FOOD</span></h2>
+  <p class="sec-sub reveal">Everything is cooked fresh, at home, the Syrian way.</p>
+  <div class="grid">
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/7e770b8b6_generated_image.png" alt="Mezze spread"><div class="veil"></div><div class="info"><h3>Mezze Spread</h3><p>Hummus, tabbouleh, olives, and warm flatbread.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/81a76f72e_generated_image.png" alt="Vine leaves"><div class="veil"></div><div class="info"><h3>Vine Leaves</h3><p>Hand-rolled and full of flavour. A house favourite.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/94f5e9a93_generated_image.png" alt="Dinner table"><div class="veil"></div><div class="info"><h3>Dinner Events</h3><p>Shared tables full of dishes, stories, and warmth.</p></div></div>
+  </div>
+</section>
+
+<section style="max-width:100%; background:#191410;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 class="sec-title reveal">OUR <span class="hl">STORY</span></h2>
+    <p class="sec-sub reveal">Cooking that brings people together.</p>
+    <div class="story reveal">
+      <span class="quote">"</span>
+      Syrian Dinner started with one idea: share the food we love with our neighbours. Every dish is cooked at home, the way it has been made in Syrian kitchens for generations. It is food made slowly, served warmly, and meant to be enjoyed together.
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">HOW TO <span class="hl">ORDER</span></h2>
+  <p class="sec-sub reveal">Simple, friendly, and homemade.</p>
+  <div class="steps reveal">
+    <div class="step"><h3>Get in touch</h3><p>Call or email us with what you would like.</p></div>
+    <div class="step"><h3>Order early</h3><p>Two days before, please — good food takes time.</p></div>
+    <div class="step"><h3>Pick up or event</h3><p>Collect your order, or join one of our dinner nights.</p></div>
+    <div class="step"><h3>Enjoy together</h3><p>Warm food, good company. That's the Syrian way.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">CONTACT <span class="hl">US</span></h2>
+  <p class="sec-sub reveal">We'd love to cook for you.</p>
+  <div class="contact-card reveal">
+    <h3 style="font-size:1.6rem; margin-bottom:8px;">ORDER TODAY</h3>
+    <p class="addr">📧 syriandinner.uk@gmail.com<br>📞 07488 554220 — call or text</p>
+    <a class="btn" href="mailto:syriandinner.uk@gmail.com?subject=Order%20enquiry">📧 Email us</a>
+    <a class="btn ghost" href="tel:07488554220">📞 Call now</a>
+  </div>
+</section>
+
+<a class="float" href="mailto:syriandinner.uk@gmail.com?subject=Order%20enquiry">📧 Order food</a>
+
+<footer>
+  Syrian Dinner — Home-Cooked Syrian Food, Aberystwyth<br>
+  Takeaway · Dinner events · Made with love
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
