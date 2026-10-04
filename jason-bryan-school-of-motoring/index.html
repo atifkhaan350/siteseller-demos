@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jason Bryan School of Motoring — Manual Driving Lessons</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --blue:#2f7ef7; --blue2:#7db4ff; --ink:#0a0f18; }
+  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+  body { background:#0a0f18; color:#f5f7fa; font-family:'Poppins',Arial,sans-serif; overflow-x:hidden; }
+  h1,h2,.display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:2px; }
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background:url('https://media.base44.com/images/public/69fe337f9b337a96768da0fd/c972ce996_generated_image.png') center/cover; animation:slowzoom 18s ease-in-out infinite alternate; }
+  @keyframes slowzoom { from{transform:scale(1)} to{transform:scale(1.12)} }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,10,18,.5) 0%, rgba(6,10,18,.85) 100%); }
+  .hero > * { position:relative; z-index:2; }
+  .kicker { display:inline-block; border:1px solid var(--blue); color:var(--blue2); padding:8px 20px; border-radius:50px; font-size:.8rem; letter-spacing:4px; text-transform:uppercase; animation:fadeDown 1s .2s both; }
+  .hero h1 { font-size:clamp(2.6rem, 11vw, 6.5rem); line-height:1; margin:18px 0 6px; background:linear-gradient(90deg,var(--blue2),#fff,var(--blue)); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 5s linear infinite, fadeDown 1s .4s both; }
+  @keyframes shine { to { background-position:300% 0; } }
+  @keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:none} }
+  .hero p.tag { font-size:1.15rem; color:#e8eef5; max-width:480px; margin:10px auto 30px; animation:fadeDown 1s .6s both; }
+  .btn { display:inline-block; background:linear-gradient(135deg,var(--blue),#1b5cc4); color:#fff; font-weight:800; padding:18px 36px; border-radius:50px; text-decoration:none; font-size:1.05rem; box-shadow:0 10px 30px rgba(47,126,247,.4); transition:transform .25s, box-shadow .25s; animation:fadeDown 1s .8s both; }
+  .btn:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 40px rgba(47,126,247,.6); }
+  .btn.ghost { background:transparent; color:#fff; border:2px solid var(--blue); box-shadow:none; animation:fadeDown 1s 1s both; }
+  .L { display:inline-block; background:#e33; color:#fff; font-family:'Bebas Neue'; font-size:2rem; padding:6px 14px; border-radius:10px; margin:18px 0 0; animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+  .marquee { background:var(--blue); overflow:hidden; white-space:nowrap; padding:12px 0; }
+  .marquee span { display:inline-block; font-family:'Bebas Neue'; font-size:1.3rem; letter-spacing:3px; color:#fff; animation:slide 22s linear infinite; }
+  @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  section { padding:80px 24px; max-width:1000px; margin:auto; }
+  .sec-title { font-size:2.6rem; text-align:center; margin-bottom:12px; }
+  .sec-title .hl { color:var(--blue2); }
+  .sec-sub { text-align:center; color:#8fa3bd; margin-bottom:44px; }
+  .reveal { opacity:0; transform:translateY(40px); transition:all .8s ease; }
+  .reveal.show { opacity:1; transform:none; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .card { position:relative; border-radius:18px; overflow:hidden; min-height:280px; display:flex; align-items:flex-end; border:1px solid #22304a; transition:transform .35s, border-color .35s; }
+  .card:hover { transform:translateY(-8px); border-color:var(--blue); }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+  .card:hover img { transform:scale(1.08); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(6,10,20,.85)); }
+  .card .info { position:relative; padding:20px; width:100%; }
+  .card h3 { font-size:1.5rem; letter-spacing:1px; color:#fff; }
+  .card p { color:#c9d6e8; font-size:.9rem; margin-top:4px; }
+  .check { list-style:none; max-width:520px; margin:auto; }
+  .check li { padding:16px 6px; border-bottom:1px dashed #2b3c58; font-size:1.05rem; display:flex; gap:12px; align-items:flex-start; transition:padding .3s; }
+  .check li:hover { padding-left:18px; color:var(--blue2); }
+  .check .tick { color:var(--blue2); font-weight:800; }
+  .stats { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:20px; }
+  .stat { background:#101a2c; border:1px solid #22304a; border-radius:16px; padding:26px 36px; text-align:center; min-width:170px; transition:transform .3s, border-color .3s; }
+  .stat:hover { transform:translateY(-5px); border-color:var(--blue); }
+  .stat .num { font-family:'Bebas Neue'; font-size:2.8rem; color:var(--blue2); }
+  .stat .lbl { color:#8fa3bd; font-size:.85rem; letter-spacing:2px; text-transform:uppercase; }
+  .steps { counter-reset:step; max-width:520px; margin:auto; }
+  .steps .step { background:#101a2c; border:1px solid #22304a; border-radius:16px; padding:22px 22px 22px 76px; margin-bottom:14px; position:relative; transition:transform .3s, border-color .3s; }
+  .steps .step:hover { transform:translateX(8px); border-color:var(--blue); }
+  .steps .step::before { counter-increment:step; content:counter(step); position:absolute; left:20px; top:50%; transform:translateY(-50%); background:linear-gradient(135deg,var(--blue),#1b5cc4); font-family:'Bebas Neue'; font-size:1.6rem; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:12px; color:#fff; }
+  .steps .step h3 { font-size:1.2rem; margin-bottom:4px; }
+  .steps .step p { color:#9db1ca; font-size:.92rem; }
+  .contact-card { background:#101a2c; border:1px solid #22304a; border-radius:18px; padding:30px; text-align:center; margin-top:34px; }
+  .contact-card p.addr { color:#9db1ca; margin-bottom:18px; font-size:1.05rem; }
+  .float { position:fixed; bottom:22px; right:22px; background:linear-gradient(135deg,var(--blue),#1b5cc4); color:#fff; font-weight:800; padding:16px 24px; border-radius:50px; text-decoration:none; box-shadow:0 12px 30px rgba(47,126,247,.5); z-index:50; animation:pulse2 2.4s infinite; }
+  @keyframes pulse2 { 0%,100%{box-shadow:0 12px 30px rgba(47,126,247,.4)} 50%{box-shadow:0 12px 44px rgba(47,126,247,.8)} }
+  footer { text-align:center; padding:44px 24px 90px; color:#68798f; font-size:.85rem; border-top:1px solid #16233a; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bg"></div>
+  <span class="kicker">Manual Driving Lessons</span>
+  <h1>JASON BRYAN<br>SCHOOL OF MOTORING</h1>
+  <p class="tag">Patient, friendly lessons. Learn to drive with confidence in a manual car.</p>
+  <div>
+    <a class="btn" href="mailto:jasonbbryan3@gmail.com?subject=Driving%20lessons%20enquiry">📧 Email to book lessons</a>
+    <a class="btn ghost" href="tel:07814708496">📞 07814 708496</a>
+  </div>
+  <span class="L">L</span>
+</div>
+
+<div class="marquee"><span>Beginners Welcome ✅ &nbsp;·&nbsp; Refresher Lessons 🔁 &nbsp;·&nbsp; Test Prep 🎯 &nbsp;·&nbsp; Patient Instructor 👍 &nbsp;·&nbsp; Local Pick-up 🚗 &nbsp;·&nbsp; Beginners Welcome ✅ &nbsp;·&nbsp; Refresher Lessons 🔁 &nbsp;·&nbsp; Test Prep 🎯 &nbsp;·&nbsp; Patient Instructor 👍 &nbsp;·&nbsp; Local Pick-up 🚗 &nbsp;·&nbsp; </span></div>
+
+<section>
+  <h2 class="sec-title reveal">WHY LEARN WITH <span class="hl">JASON</span></h2>
+  <p class="sec-sub reveal">A calm car is a fast way to learn.</p>
+  <ul class="check reveal">
+    <li><span class="tick">✓</span> Full beginners welcome — no experience needed</li>
+    <li><span class="tick">✓</span> Patient, professional instruction — no shouting, ever</li>
+    <li><span class="tick">✓</span> Refresher lessons if you haven't driven in a while</li>
+    <li><span class="tick">✓</span> Test preparation — know exactly what to expect</li>
+    <li><span class="tick">✓</span> Pick-up from home, work, or college</li>
+    <li><span class="tick">✓</span> Learn in a clean, easy-to-drive manual car</li>
+  </ul>
+</section>
+
+<section style="max-width:100%; background:#0d1524;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 class="sec-title reveal">YOUR LESSONS, <span class="hl">YOUR PACE</span></h2>
+    <p class="sec-sub reveal">Simple steps from first turn of the key to test day.</p>
+    <div class="steps reveal">
+      <div class="step"><h3>1. Say hello</h3><p>Email or call. Tell Jason what you need and when you're free.</p></div>
+      <div class="step"><h3>2. Start easy</h3><p>Begin with the basics in a calm, quiet area. No pressure.</p></div>
+      <div class="step"><h3>3. Build up</h3><p>Grow your skills week by week — town, country, and test routes.</p></div>
+      <div class="step"><h3>4. Pass your test</h3><p>Walk into test day calm, prepared, and ready.</p></div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="num">100%</div><div class="lbl">Patient teaching</div></div>
+      <div class="stat"><div class="num">1st</div><div class="lbl">Lesson nerves-free</div></div>
+      <div class="stat"><div class="num">Manual</div><div class="lbl">Gearbox mastery</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">BOOK <span class="hl">TODAY</span></h2>
+  <p class="sec-sub reveal">Lessons available now — get in touch and start driving.</p>
+  <div class="contact-card reveal">
+    <h3 style="font-size:1.6rem; margin-bottom:8px;">GET IN TOUCH</h3>
+    <p class="addr">📧 jasonbbryan3@gmail.com<br>📞 07814 708496 — call, text, or WhatsApp</p>
+    <a class="btn" href="mailto:jasonbbryan3@gmail.com?subject=Driving%20lessons%20enquiry">📧 Email Jason</a>
+    <a class="btn ghost" href="tel:07814708496">📞 Call now</a>
+  </div>
+</section>
+
+<a class="float" href="mailto:jasonbbryan3@gmail.com?subject=Driving%20lessons%20enquiry">📧 Book lessons</a>
+
+<footer>
+  Jason Bryan School of Motoring — Manual Driving Lessons<br>
+  Learner drivers welcome · Contact Jason to book
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
