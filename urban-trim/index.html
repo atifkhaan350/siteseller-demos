@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Trim — Barbers, Sheffield</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+  body { background:#111; color:#fff; }
+  .hero { background:linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url('https://images.unsplash.com/photo-1503951914875-4581628ac64e?w=800&q=60') center/cover; min-height:90vh; display:flex; flex-direction:column; justify-content:center; padding:24px; text-align:center; }
+  .hero h1 { font-size:3rem; letter-spacing:2px; }
+  .hero .gold { color:#e6b34d; }
+  .hero p { margin:16px auto 28px; font-size:1.2rem; max-width:480px; line-height:1.5; color:#eee; }
+  .btn { display:inline-block; background:#e6b34d; color:#111; font-weight:bold; padding:16px 32px; border-radius:50px; text-decoration:none; font-size:1.1rem; margin:6px; }
+  .btn.outline { background:transparent; color:#fff; border:2px solid #e6b34d; }
+  section { padding:56px 24px; max-width:900px; margin:auto; }
+  h2 { text-align:center; color:#e6b34d; margin-bottom:28px; font-size:1.8rem; letter-spacing:1px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .card { background:#1c1c1c; border-radius:14px; padding:24px; text-align:center; border:1px solid #333; }
+  .card .icon { font-size:2rem; }
+  .card h3 { margin:10px 0 6px; }
+  .card p { color:#bbb; font-size:.95rem; line-height:1.4; }
+  .reviews { background:#181818; }
+  .review { background:#242424; border-radius:14px; padding:20px; margin-bottom:14px; }
+  .stars { color:#e6b34d; }
+  .review p { color:#ddd; margin-top:8px; line-height:1.5; font-style:italic; }
+  .review .who { color:#888; font-size:.85rem; margin-top:10px; font-style:normal; }
+  ul.times { list-style:none; max-width:400px; margin:auto; }
+  ul.times li { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #333; }
+  .contact a.btn { width:100%; max-width:400px; }
+  footer { text-align:center; padding:32px 24px; color:#777; font-size:.85rem; border-top:1px solid #222; }
+  .sub { font-size:.95rem; color:#999; text-align:center; margin-top:8px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>URBAN <span class="gold">TRIM</span></h1>
+  <p>Top-rated barbers on London Road, Sheffield. Sharp fades, clean cuts, every time.</p>
+  <div>
+    <a class="btn" href="tel:+447507040706">📞 Book by phone</a>
+    <a class="btn outline" href="https://www.instagram.com/urbantrim.uk/" target="_blank">See our work on Instagram</a>
+  </div>
+  <p class="sub">⭐ 4.9 stars from 160+ Google reviews</p>
+</div>
+
+<section>
+  <h2>WHAT WE DO</h2>
+  <div class="cards">
+    <div class="card"><div class="icon">✂️</div><h3>Skin Fade</h3><p>Crisp blends, sharp lines. Our most loved cut.</p></div>
+    <div class="card"><div class="icon">💈</div><h3>Haircut</h3><p>Classic or modern. We cut to suit your style.</p></div>
+    <div class="card"><div class="icon">🧔</div><h3>Beard Trim</h3><p>Shaped, lined up, and tidy.</p></div>
+    <div class="card"><div class="icon">👦</div><h3>Kids' Cuts</h3><p>Friendly cuts for the little ones.</p></div>
+  </div>
+</section>
+
+<section class="reviews">
+  <h2>WHAT PEOPLE SAY</h2>
+  <div class="review"><div class="stars">★★★★★</div><p>"Best barbers in Sheffield, hands down. Always a perfect fade."</p><div class="who">— Google review</div></div>
+  <div class="review"><div class="stars">★★★★★</div><p>"Friendly lads, great chat, and my cut is always spot on."</p><div class="who">— Google review</div></div>
+  <div class="review"><div class="stars">★★★★★</div><p>"Walked in, walked out feeling brand new. Highly recommend."</p><div class="who">— Google review</div></div>
+</section>
+
+<section>
+  <h2>OPENING HOURS</h2>
+  <ul class="times">
+    <li><span>Monday – Saturday</span><span>9:00 – 18:00</span></li>
+    <li><span>Sunday</span><span>Closed</span></li>
+  </ul>
+</section>
+
+<section class="contact">
+  <h2>FIND US</h2>
+  <p style="text-align:center; color:#bbb; margin-bottom:20px;">35A London Road, Highfield, Sheffield S2 4LA</p>
+  <div style="text-align:center;">
+    <a class="btn" href="tel:+447507040706">📞 07507 040706</a><br>
+    <a class="btn outline" href="https://www.google.com/maps/search/Urban+Trim+35A+London+Road+Sheffield" target="_blank">Get directions</a>
+  </div>
+</section>
+
+<footer>
+  Urban Trim — Barbers, London Road, Sheffield<br>
+  Walk-ins welcome · Call or DM us to book
+</footer>
+
+</body>
+</html>
