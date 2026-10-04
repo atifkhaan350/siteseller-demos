@@ -4,84 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urban Trim — Barbers, Sheffield</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-  body { background:#111; color:#fff; }
-  .hero { background:linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.85)), url('https://images.unsplash.com/photo-1503951914875-4581628ac64e?w=800&q=60') center/cover; min-height:90vh; display:flex; flex-direction:column; justify-content:center; padding:24px; text-align:center; }
-  .hero h1 { font-size:3rem; letter-spacing:2px; }
-  .hero .gold { color:#e6b34d; }
-  .hero p { margin:16px auto 28px; font-size:1.2rem; max-width:480px; line-height:1.5; color:#eee; }
-  .btn { display:inline-block; background:#e6b34d; color:#111; font-weight:bold; padding:16px 32px; border-radius:50px; text-decoration:none; font-size:1.1rem; margin:6px; }
-  .btn.outline { background:transparent; color:#fff; border:2px solid #e6b34d; }
-  section { padding:56px 24px; max-width:900px; margin:auto; }
-  h2 { text-align:center; color:#e6b34d; margin-bottom:28px; font-size:1.8rem; letter-spacing:1px; }
-  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-  .card { background:#1c1c1c; border-radius:14px; padding:24px; text-align:center; border:1px solid #333; }
-  .card .icon { font-size:2rem; }
-  .card h3 { margin:10px 0 6px; }
-  .card p { color:#bbb; font-size:.95rem; line-height:1.4; }
-  .reviews { background:#181818; }
-  .review { background:#242424; border-radius:14px; padding:20px; margin-bottom:14px; }
-  .stars { color:#e6b34d; }
-  .review p { color:#ddd; margin-top:8px; line-height:1.5; font-style:italic; }
-  .review .who { color:#888; font-size:.85rem; margin-top:10px; font-style:normal; }
-  ul.times { list-style:none; max-width:400px; margin:auto; }
-  ul.times li { display:flex; justify-content:space-between; padding:12px 0; border-bottom:1px solid #333; }
-  .contact a.btn { width:100%; max-width:400px; }
-  footer { text-align:center; padding:32px 24px; color:#777; font-size:.85rem; border-top:1px solid #222; }
-  .sub { font-size:.95rem; color:#999; text-align:center; margin-top:8px; }
+  :root { --gold:#e8b64c; --gold2:#f7d78a; --ink:#0c0c0c; }
+  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+  body { background:#0c0c0c; color:#f5f5f5; font-family:'Poppins',Arial,sans-serif; overflow-x:hidden; }
+  h1,h2,.display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:2px; }
+
+  /* ---------- HERO ---------- */
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1589114006871-65d5c2e5aa56?w=1400&q=70') center/cover; animation:slowzoom 18s ease-in-out infinite alternate; }
+  @keyframes slowzoom { from{transform:scale(1)} to{transform:scale(1.12)} }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.75) 100%); }
+  .hero > * { position:relative; z-index:2; }
+  .kicker { display:inline-block; border:1px solid var(--gold); color:var(--gold); padding:8px 20px; border-radius:50px; font-size:.8rem; letter-spacing:4px; text-transform:uppercase; animation:fadeDown 1s .2s both; }
+  .hero h1 { font-size:clamp(3.5rem, 14vw, 8rem); line-height:1; margin:18px 0 6px; background:linear-gradient(90deg,var(--gold),#fff,var(--gold2),var(--gold)); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 5s linear infinite, fadeDown 1s .4s both; }
+  @keyframes shine { to { background-position:300% 0; } }
+  @keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:none} }
+  .hero p.tag { font-size:1.15rem; color:#e8e8e8; max-width:480px; margin:10px auto 30px; animation:fadeDown 1s .6s both; }
+  .btn { display:inline-block; background:linear-gradient(135deg,var(--gold),#c98f2a); color:#111; font-weight:800; padding:18px 36px; border-radius:50px; text-decoration:none; font-size:1.05rem; box-shadow:0 10px 30px rgba(232,182,76,.35); transition:transform .25s, box-shadow .25s; animation:fadeDown 1s .8s both; }
+  .btn:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 40px rgba(232,182,76,.5); }
+  .btn.ghost { background:transparent; color:#fff; border:2px solid var(--gold); box-shadow:none; animation:fadeDown 1s 1s both; }
+  .stars-row { margin-top:26px; animation:fadeDown 1s 1.2s both; }
+  .stars-row .star { color:var(--gold); font-size:1.3rem; display:inline-block; animation:pop .6s both; }
+  .stars-row .star:nth-child(1){animation-delay:1.3s}.stars-row .star:nth-child(2){animation-delay:1.45s}.stars-row .star:nth-child(3){animation-delay:1.6s}.stars-row .star:nth-child(4){animation-delay:1.75s}.stars-row .star:nth-child(5){animation-delay:1.9s}
+  @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+  .scroll-cue { position:absolute; bottom:22px; left:50%; transform:translateX(-50%); z-index:2; color:#bbb; font-size:.75rem; letter-spacing:3px; animation:bounce 1.6s infinite; }
+  @keyframes bounce { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,10px)} }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee { background:var(--gold); overflow:hidden; white-space:nowrap; padding:12px 0; }
+  .marquee span { display:inline-block; font-family:'Bebas Neue'; font-size:1.3rem; letter-spacing:3px; color:#111; animation:slide 22s linear infinite; }
+  @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ---------- SECTIONS ---------- */
+  section { padding:80px 24px; max-width:1000px; margin:auto; }
+  .sec-title { font-size:2.6rem; text-align:center; margin-bottom:12px; }
+  .sec-title .gold { color:var(--gold); }
+  .sec-sub { text-align:center; color:#999; margin-bottom:44px; }
+
+  .reveal { opacity:0; transform:translateY(40px); transition:all .8s ease; }
+  .reveal.show { opacity:1; transform:none; }
+
+  /* ---------- SERVICES ---------- */
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .card { position:relative; border-radius:18px; overflow:hidden; min-height:300px; display:flex; align-items:flex-end; border:1px solid #2a2a2a; transition:transform .35s, border-color .35s; }
+  .card:hover { transform:translateY(-8px); border-color:var(--gold); }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+  .card:hover img { transform:scale(1.08); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.85)); }
+  .card .info { position:relative; padding:20px; width:100%; }
+  .card h3 { font-size:1.6rem; letter-spacing:1px; color:#fff; }
+  .card p { color:#ccc; font-size:.9rem; margin-top:4px; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; }
+  .gallery img { width:100%; height:190px; object-fit:cover; border-radius:12px; filter:saturate(1.05); transition:transform .5s, filter .5s; cursor:pointer; }
+  .gallery img:hover { transform:scale(1.06); filter:saturate(1.4) brightness(1.1); }
+
+  /* ---------- STATS ---------- */
+  .stats { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:20px; }
+  .stat { background:#191919; border:1px solid #2c2c2c; border-radius:16px; padding:26px 36px; text-align:center; min-width:160px; transition:transform .3s, border-color .3s; }
+  .stat:hover { transform:translateY(-5px); border-color:var(--gold); }
+  .stat .num { font-family:'Bebas Neue'; font-size:2.8rem; color:var(--gold); }
+  .stat .lbl { color:#999; font-size:.85rem; letter-spacing:2px; text-transform:uppercase; }
+
+  /* ---------- REVIEWS ---------- */
+  .reviews-wrap { background:linear-gradient(180deg,#101010,#0c0c0c); }
+  .review { background:#1a1a1a; border:1px solid #2c2c2c; border-radius:16px; padding:26px; margin-bottom:16px; position:relative; transition:transform .3s, border-color .3s; }
+  .review:hover { transform:translateX(6px); border-color:var(--gold); }
+  .review .quote { color:var(--gold); font-family:'Bebas Neue'; font-size:2rem; line-height:0; }
+  .review p { color:#ddd; margin:10px 0; line-height:1.6; font-style:italic; }
+  .review .who { color:#888; font-size:.85rem; }
+  .review .st { color:var(--gold); }
+
+  /* ---------- HOURS + CONTACT ---------- */
+  .hours-list { list-style:none; max-width:440px; margin:auto; }
+  .hours-list li { display:flex; justify-content:space-between; padding:16px 6px; border-bottom:1px dashed #333; font-size:1.05rem; transition:padding .3s, color .3s; }
+  .hours-list li:hover { padding-left:18px; color:var(--gold); }
+  .map-card { background:#191919; border:1px solid #2c2c2c; border-radius:18px; padding:30px; text-align:center; margin-top:34px; }
+  .map-card p.addr { color:#bbb; margin-bottom:18px; font-size:1.05rem; }
+
+  /* ---------- FLOATING BUTTON ---------- */
+  .float { position:fixed; bottom:22px; right:22px; background:linear-gradient(135deg,var(--gold),#c98f2a); color:#111; font-weight:800; padding:16px 24px; border-radius:50px; text-decoration:none; box-shadow:0 12px 30px rgba(232,182,76,.4); z-index:50; animation:pulse 2.4s infinite; }
+  @keyframes pulse { 0%,100%{box-shadow:0 12px 30px rgba(232,182,76,.4)} 50%{box-shadow:0 12px 44px rgba(232,182,76,.75)} }
+
+  footer { text-align:center; padding:44px 24px 90px; color:#777; font-size:.85rem; border-top:1px solid #1e1e1e; }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>URBAN <span class="gold">TRIM</span></h1>
-  <p>Top-rated barbers on London Road, Sheffield. Sharp fades, clean cuts, every time.</p>
+  <div class="bg"></div>
+  <span class="kicker">Sheffield · London Road</span>
+  <h1>URBAN TRIM</h1>
+  <p class="tag">Sharp fades. Clean cuts. Sheffield's most loved barbers.</p>
   <div>
     <a class="btn" href="tel:+447507040706">📞 Book by phone</a>
-    <a class="btn outline" href="https://www.instagram.com/urbantrim.uk/" target="_blank">See our work on Instagram</a>
+    <a class="btn ghost" href="https://www.instagram.com/urbantrim.uk/" target="_blank">See our work</a>
   </div>
-  <p class="sub">⭐ 4.9 stars from 160+ Google reviews</p>
+  <div class="stars-row">
+    <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+    <div style="color:#ccc; font-size:.9rem; margin-top:6px;">4.9 stars · 160+ Google reviews</div>
+  </div>
+  <div class="scroll-cue">SCROLL ▾</div>
 </div>
 
+<div class="marquee"><span>Skin Fades ✂️ &nbsp;·&nbsp; Classic Cuts 💈 &nbsp;·&nbsp; Beard Trims 🧔 &nbsp;·&nbsp; Kids' Cuts 👦 &nbsp;·&nbsp; Walk-ins Welcome 🚶 &nbsp;·&nbsp; Skin Fades ✂️ &nbsp;·&nbsp; Classic Cuts 💈 &nbsp;·&nbsp; Beard Trims 🧔 &nbsp;·&nbsp; Kids' Cuts 👦 &nbsp;·&nbsp; Walk-ins Welcome 🚶 &nbsp;·&nbsp; </span></div>
+
 <section>
-  <h2>WHAT WE DO</h2>
-  <div class="cards">
-    <div class="card"><div class="icon">✂️</div><h3>Skin Fade</h3><p>Crisp blends, sharp lines. Our most loved cut.</p></div>
-    <div class="card"><div class="icon">💈</div><h3>Haircut</h3><p>Classic or modern. We cut to suit your style.</p></div>
-    <div class="card"><div class="icon">🧔</div><h3>Beard Trim</h3><p>Shaped, lined up, and tidy.</p></div>
-    <div class="card"><div class="icon">👦</div><h3>Kids' Cuts</h3><p>Friendly cuts for the little ones.</p></div>
+  <h2 class="sec-title reveal">WHAT WE <span class="gold">DO</span></h2>
+  <p class="sec-sub reveal">Every cut, done right.</p>
+  <div class="grid">
+    <div class="card reveal"><img src="https://images.unsplash.com/photo-1599351431202-b429cac9f1f4?w=600&q=60" alt="Skin fade"><div class="veil"></div><div class="info"><h3>Skin Fade</h3><p>Crisp blends and sharp lines. Our most loved cut.</p></div></div>
+    <div class="card reveal"><img src="https://images.unsplash.com/photo-1503951914875-4581628ac64e?w=600&q=60" alt="Haircut"><div class="veil"></div><div class="info"><h3>Haircut</h3><p>Classic or modern. Cut to suit your style.</p></div></div>
+    <div class="card reveal"><img src="https://images.unsplash.com/photo-1621605812392-0d6ef0f0dedf?w=600&q=60" alt="Beard trim"><div class="veil"></div><div class="info"><h3>Beard Trim</h3><p>Shaped, lined up, and sharp.</p></div></div>
+    <div class="card reveal"><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=600&q=60" alt="Kids cut"><div class="veil"></div><div class="info"><h3>Kids' Cuts</h3><p>Friendly cuts for the little ones.</p></div></div>
   </div>
 </section>
 
-<section class="reviews">
-  <h2>WHAT PEOPLE SAY</h2>
-  <div class="review"><div class="stars">★★★★★</div><p>"Best barbers in Sheffield, hands down. Always a perfect fade."</p><div class="who">— Google review</div></div>
-  <div class="review"><div class="stars">★★★★★</div><p>"Friendly lads, great chat, and my cut is always spot on."</p><div class="who">— Google review</div></div>
-  <div class="review"><div class="stars">★★★★★</div><p>"Walked in, walked out feeling brand new. Highly recommend."</p><div class="who">— Google review</div></div>
+<section class="reviews-wrap" style="max-width:100%;">
+  <div style="max-width:1000px; margin:auto;">
+    <h2 class="sec-title reveal">FRESH FROM <span class="gold">THE CHAIR</span></h2>
+    <p class="sec-sub reveal">Our latest looks.</p>
+    <div class="gallery reveal">
+      <img src="https://images.unsplash.com/photo-1508979060448-45ed0cddf165?w=500&q=60" alt="Cut 1">
+      <img src="https://images.unsplash.com/photo-16054977861278-159d8ddf7dba?w=500&q=60" alt="Cut 2">
+      <img src="https://images.unsplash.com/photo-1493256338653-d8d370b6d2ea?w=500&q=60" alt="Cut 3">
+      <img src="https://images.unsplash.com/photo-1596728307649-c58e20c4cc98?w=500&q=60" alt="Cut 4">
+      <img src="https://images.unsplash.com/photo-1622286342621-4bd4155668bd?w=500&q=60" alt="Cut 5">
+      <img src="https://images.unsplash.com/photo-1583760025252-236799b7bae6?w=500&q=60" alt="Cut 6">
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="num">160+</div><div class="lbl">5-star reviews</div></div>
+      <div class="stat"><div class="num">1000s</div><div class="lbl">Of cuts done</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Days open a week</div></div>
+    </div>
+  </div>
 </section>
 
 <section>
-  <h2>OPENING HOURS</h2>
-  <ul class="times">
-    <li><span>Monday – Saturday</span><span>9:00 – 18:00</span></li>
+  <h2 class="sec-title reveal">WHAT PEOPLE <span class="gold">SAY</span></h2>
+  <p class="sec-sub reveal">Real words from real customers.</p>
+  <div class="review reveal"><span class="quote">"</span><span class="st">★★★★★</span><p>Best barbers in Sheffield, hands down. Always a perfect fade.</p><div class="who">— Google review</div></div>
+  <div class="review reveal"><span class="quote">"</span><span class="st">★★★★★</span><p>Friendly lads, great chat, and my cut is always spot on.</p><div class="who">— Google review</div></div>
+  <div class="review reveal"><span class="quote">"</span><span class="st">★★★★★</span><p>Walked in, walked out feeling brand new. Highly recommend.</p><div class="who">— Google review</div></div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">OPENING <span class="gold">HOURS</span></h2>
+  <p class="sec-sub reveal">Come when it suits you.</p>
+  <ul class="hours-list reveal">
+    <li><span>Monday – Saturday</span><span style="color:var(--gold)">9:00 – 18:00</span></li>
     <li><span>Sunday</span><span>Closed</span></li>
   </ul>
-</section>
-
-<section class="contact">
-  <h2>FIND US</h2>
-  <p style="text-align:center; color:#bbb; margin-bottom:20px;">35A London Road, Highfield, Sheffield S2 4LA</p>
-  <div style="text-align:center;">
-    <a class="btn" href="tel:+447507040706">📞 07507 040706</a><br>
-    <a class="btn outline" href="https://www.google.com/maps/search/Urban+Trim+35A+London+Road+Sheffield" target="_blank">Get directions</a>
+  <div class="map-card reveal">
+    <h3 style="font-size:1.6rem; margin-bottom:8px;">FIND US</h3>
+    <p class="addr">📍 35A London Road, Highfield, Sheffield S2 4LA</p>
+    <a class="btn" href="tel:+447507040706">📞 07507 040706</a>
+    <a class="btn ghost" href="https://www.google.com/maps/search/Urban+Trim+35A+London+Road+Sheffield" target="_blank">Get directions</a>
   </div>
 </section>
 
+<a class="float" href="tel:+447507040706">📞 Book a cut</a>
+
 <footer>
-  Urban Trim — Barbers, London Road, Sheffield<br>
+  Urban Trim — Barbers · London Road, Sheffield<br>
   Walk-ins welcome · Call or DM us to book
 </footer>
 
+<script>
+  // Scroll reveal animations
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Stagger gallery images
+  document.querySelectorAll('.gallery img').forEach((img, i) => {
+    img.style.opacity = 0; img.style.transform = 'scale(.9)'; img.style.transition = 'all .6s ' + (i*0.08) + 's';
+    io.observe(img);
+  });
+  document.querySelectorAll('.gallery img').forEach(el => el.addEventListener ? null : null);
+  const galleryObs = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'scale(1)'; }
+  }), { threshold: 0.1 });
+  document.querySelectorAll('.gallery img').forEach(el => galleryObs.observe(el));
+
+  // Animated counters
+  const counters = document.querySelectorAll('.stat .num');
+  const cObs = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting || e.target.dataset.done) return;
+    e.target.dataset.done = 1;
+    const target = e.target.textContent;
+    if (target.includes('+')) {
+      let n = 0; const end = parseInt(target);
+      const iv = setInterval(() => { n += Math.ceil(end/30); if (n >= end) { n = end; clearInterval(iv); } e.target.textContent = n + '+'; }, 40);
+    }
+  }), { threshold: 0.5 });
+  counters.forEach(c => cObs.observe(c));
+</script>
 </body>
 </html>
