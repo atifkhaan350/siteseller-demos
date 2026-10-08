@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Busy Bee Cleaners — Home Cleaning in Birmingham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --honey:#f5b02e; --honey2:#ffd98a; --ink:#14110a; }
+  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+  body { background:#14110a; color:#fbf7ef; font-family:'Poppins',Arial,sans-serif; overflow-x:hidden; }
+  h1,h2,.display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:2px; }
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background:url('https://media.base44.com/images/public/69fe337f9b337a96768da0fd/453a88735_generated_image.png') center/cover; animation:slowzoom 18s ease-in-out infinite alternate; }
+  @keyframes slowzoom { from{transform:scale(1)} to{transform:scale(1.12)} }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,12,6,.45) 0%, rgba(14,12,6,.85) 100%); }
+  .hero > * { position:relative; z-index:2; }
+  .kicker { display:inline-block; border:1px solid var(--honey); color:var(--honey2); padding:8px 20px; border-radius:50px; font-size:.8rem; letter-spacing:4px; text-transform:uppercase; animation:fadeDown 1s .2s both; }
+  .hero h1 { font-size:clamp(3rem, 13vw, 7.5rem); line-height:1; margin:18px 0 6px; background:linear-gradient(90deg,var(--honey2),#fff,var(--honey)); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 5s linear infinite, fadeDown 1s .4s both; }
+  @keyframes shine { to { background-position:300% 0; } }
+  @keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:none} }
+  .hero p.tag { font-size:1.15rem; color:#f4ecdc; max-width:480px; margin:10px auto 30px; animation:fadeDown 1s .6s both; }
+  .btn { display:inline-block; background:linear-gradient(135deg,var(--honey),#d18c10); color:#241c07; font-weight:800; padding:18px 36px; border-radius:50px; text-decoration:none; font-size:1.05rem; box-shadow:0 10px 30px rgba(245,176,46,.4); transition:transform .25s, box-shadow .25s; animation:fadeDown 1s .8s both; }
+  .btn:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 40px rgba(245,176,46,.6); }
+  .btn.ghost { background:transparent; color:#fff; border:2px solid var(--honey); box-shadow:none; animation:fadeDown 1s 1s both; }
+  .hero .bee { font-size:1.6rem; margin-top:16px; animation:hover 3s ease-in-out infinite, fadeDown 1s 1.2s both; }
+  @keyframes hover { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .marquee { background:var(--honey); overflow:hidden; white-space:nowrap; padding:12px 0; }
+  .marquee span { display:inline-block; font-family:'Bebas Neue'; font-size:1.3rem; letter-spacing:3px; color:#241c07; animation:slide 22s linear infinite; }
+  @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  section { padding:80px 24px; max-width:1000px; margin:auto; }
+  .sec-title { font-size:2.6rem; text-align:center; margin-bottom:12px; }
+  .sec-title .hl { color:var(--honey2); }
+  .sec-sub { text-align:center; color:#bcae91; margin-bottom:44px; }
+  .reveal { opacity:0; transform:translateY(40px); transition:all .8s ease; }
+  .reveal.show { opacity:1; transform:none; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .card { position:relative; border-radius:18px; overflow:hidden; min-height:280px; display:flex; align-items:flex-end; transition:transform .35s, border-color .35s; border:1px solid #3b3121; }
+  .card:hover { transform:translateY(-8px); border-color:var(--honey); }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+  .card:hover img { transform:scale(1.08); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(14,12,6,.85)); }
+  .card .info { position:relative; padding:20px; width:100%; }
+  .card h3 { font-size:1.5rem; letter-spacing:1px; color:#fff; }
+  .card p { color:#eadfc6; font-size:.9rem; margin-top:4px; }
+  .check { list-style:none; max-width:520px; margin:auto; }
+  .check li { padding:16px 6px; border-bottom:1px dashed #3d3423; font-size:1.05rem; display:flex; gap:12px; align-items:flex-start; transition:padding .3s; }
+  .check li:hover { padding-left:18px; color:var(--honey2); }
+  .check .tick { color:var(--honey2); font-weight:800; }
+  .steps { max-width:520px; margin:auto; counter-reset:s; }
+  .step { background:#1d1810; border:1px solid #3b3121; border-radius:16px; padding:22px 22px 22px 76px; margin-bottom:14px; position:relative; transition:transform .3s, border-color .3s; }
+  .step:hover { transform:translateX(8px); border-color:var(--honey); }
+  .step::before { counter-increment:s; content:counter(s); position:absolute; left:20px; top:50%; transform:translateY(-50%); background:linear-gradient(135deg,var(--honey),#d18c10); font-family:'Bebas Neue'; font-size:1.6rem; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:12px; color:#241c07; }
+  .step h3 { font-size:1.15rem; margin-bottom:4px; }
+  .step p { color:#cbbd9f; font-size:.92rem; }
+  .contact-card { background:#1d1810; border:1px solid #3b3121; border-radius:18px; padding:30px; text-align:center; margin-top:34px; }
+  .contact-card p.addr { color:#cbbd9f; margin-bottom:18px; font-size:1.05rem; }
+  .float { position:fixed; bottom:22px; right:22px; background:linear-gradient(135deg,var(--honey),#d18c10); color:#241c07; font-weight:800; padding:16px 24px; border-radius:50px; text-decoration:none; box-shadow:0 12px 30px rgba(245,176,46,.5); z-index:50; animation:pulse2 2.4s infinite; }
+  @keyframes pulse2 { 0%,100%{box-shadow:0 12px 30px rgba(245,176,46,.4)} 50%{box-shadow:0 12px 44px rgba(245,176,46,.8)} }
+  footer { text-align:center; padding:44px 24px 90px; color:#8f8168; font-size:.85rem; border-top:1px solid #2b2416; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bg"></div>
+  <span class="kicker">Birmingham · Trusted Local</span>
+  <h1>BUSY BEE<br>CLEANERS</h1>
+  <p class="tag">A clean home, without the work. Friendly, reliable cleaning across Birmingham.</p>
+  <div>
+    <a class="btn" href="mailto:busybeecleaners28@gmail.com?subject=Cleaning%20quote">📧 Get a free quote</a>
+    <a class="btn ghost" href="tel:07521921413">📞 07521 921413</a>
+  </div>
+  <span class="bee">🐝</span>
+</div>
+
+<div class="marquee"><span>Homes &amp; Flats 🏠 &nbsp;·&nbsp; Regular Cleans 🔁 &nbsp;·&nbsp; Deep Cleans ✨ &nbsp;·&nbsp; Ironing 👕 &nbsp;·&nbsp; Free Quotes 💬 &nbsp;·&nbsp; Homes &amp; Flats 🏠 &nbsp;·&nbsp; Regular Cleans 🔁 &nbsp;·&nbsp; Deep Cleans ✨ &nbsp;·&nbsp; Ironing 👕 &nbsp;·&nbsp; Free Quotes 💬 &nbsp;·&nbsp; </span></div>
+
+<section>
+  <h2 class="sec-title reveal">WHAT WE <span class="hl">CLEAN</span></h2>
+  <p class="sec-sub reveal">One call, and it's done.</p>
+  <div class="grid">
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/453a88735_generated_image.png" alt="Kitchen cleaning"><div class="veil"></div><div class="info"><h3>Kitchens &amp; Bathrooms</h3><p>Sparkling surfaces, shining taps, fresh and hygienic.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/4927636fe_generated_image.png" alt="Bedrooms"><div class="veil"></div><div class="info"><h3>Bedrooms &amp; Living Rooms</h3><p>Neat, dust-free rooms you can relax in.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/ae4f07dc9_generated_image.png" alt="Professional cleaning"><div class="veil"></div><div class="info"><h3>Every Detail</h3><p>Careful, thorough work from people who love cleaning.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">WHY BUSY <span class="hl">BEE</span></h2>
+  <p class="sec-sub reveal">Simple, friendly, dependable.</p>
+  <ul class="check reveal">
+    <li><span class="tick">✓</span> Free, honest quotes — no surprise costs</li>
+    <li><span class="tick">✓</span> Regular weekly or fortnightly cleans</li>
+    <li><span class="tick">✓</span> One-off deep cleans for special occasions</li>
+    <li><span class="tick">✓</span> Ironing service available</li>
+    <li><span class="tick">✓</span> Happy to travel to you across Birmingham</li>
+    <li><span class="tick">✓</span> Same friendly face every visit</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">HOW IT <span class="hl">WORKS</span></h2>
+  <p class="sec-sub reveal">Easier than tidying up.</p>
+  <div class="steps reveal">
+    <div class="step"><h3>Get your quote</h3><p>Call or email. Tell us your home size and what you need.</p></div>
+    <div class="step"><h3>Book your clean</h3><p>Pick a day that works. We show up on time, every time.</p></div>
+    <div class="step"><h3>Enjoy your home</h3><p>Come back to a fresh, clean space. Put your feet up.</p></div>
+    <div class="step"><h3>Stay spotless</h3><p>Book regular cleans and never worry about it again.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">GET YOUR <span class="hl">FREE QUOTE</span></h2>
+  <p class="sec-sub reveal">One message is all it takes.</p>
+  <div class="contact-card reveal">
+    <h3 style="font-size:1.6rem; margin-bottom:8px;">CONTACT US</h3>
+    <p class="addr">📧 busybeecleaners28@gmail.com<br>📞 07521 921413 — call, text, or WhatsApp<br>📍 Birmingham — we come to you</p>
+    <a class="btn" href="mailto:busybeecleaners28@gmail.com?subject=Cleaning%20quote">📧 Email for a quote</a>
+    <a class="btn ghost" href="tel:07521921413">📞 Call now</a>
+  </div>
+</section>
+
+<a class="float" href="mailto:busybeecleaners28@gmail.com?subject=Cleaning%20quote">🐝 Free quote</a>
+
+<footer>
+  Busy Bee Cleaners — Home Cleaning in Birmingham<br>
+  Free quotes · Regular &amp; deep cleans · Ironing
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
