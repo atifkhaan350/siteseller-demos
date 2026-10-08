@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charlie Widmer — Singer, Songwriter & Music Teacher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root { --gold:#e3b34c; --gold2:#f7dca0; --ink:#0d0a12; }
+  * { margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+  body { background:#0d0a12; color:#f6f2ea; font-family:'Poppins',Arial,sans-serif; overflow-x:hidden; }
+  h1,h2,.display { font-family:'Bebas Neue',Impact,sans-serif; letter-spacing:2px; }
+  .hero { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px; overflow:hidden; }
+  .hero .bg { position:absolute; inset:0; background:url('https://media.base44.com/images/public/69fe337f9b337a96768da0fd/278c7070b_generated_image.png') center/cover; animation:slowzoom 18s ease-in-out infinite alternate; }
+  @keyframes slowzoom { from{transform:scale(1)} to{transform:scale(1.12)} }
+  .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,7,14,.45) 0%, rgba(10,7,14,.85) 100%); }
+  .hero > * { position:relative; z-index:2; }
+  .kicker { display:inline-block; border:1px solid var(--gold); color:var(--gold2); padding:8px 20px; border-radius:50px; font-size:.8rem; letter-spacing:4px; text-transform:uppercase; animation:fadeDown 1s .2s both; }
+  .hero h1 { font-size:clamp(3rem, 13vw, 7.5rem); line-height:1; margin:18px 0 6px; background:linear-gradient(90deg,var(--gold2),#fff,var(--gold)); background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shine 5s linear infinite, fadeDown 1s .4s both; }
+  @keyframes shine { to { background-position:300% 0; } }
+  @keyframes fadeDown { from{opacity:0; transform:translateY(-30px)} to{opacity:1; transform:none} }
+  .hero p.tag { font-size:1.15rem; color:#efe8da; max-width:500px; margin:10px auto 30px; animation:fadeDown 1s .6s both; }
+  .btn { display:inline-block; background:linear-gradient(135deg,var(--gold),#b8862c); color:#1d1607; font-weight:800; padding:18px 36px; border-radius:50px; text-decoration:none; font-size:1.05rem; box-shadow:0 10px 30px rgba(227,179,76,.4); transition:transform .25s, box-shadow .25s; animation:fadeDown 1s .8s both; }
+  .btn:hover { transform:translateY(-4px) scale(1.04); box-shadow:0 16px 40px rgba(227,179,76,.6); }
+  .btn.ghost { background:transparent; color:#fff; border:2px solid var(--gold); box-shadow:none; animation:fadeDown 1s 1s both; }
+  .marquee { background:var(--gold); overflow:hidden; white-space:nowrap; padding:12px 0; }
+  .marquee span { display:inline-block; font-family:'Bebas Neue'; font-size:1.3rem; letter-spacing:3px; color:#1d1607; animation:slide 22s linear infinite; }
+  @keyframes slide { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  section { padding:80px 24px; max-width:1000px; margin:auto; }
+  .sec-title { font-size:2.6rem; text-align:center; margin-bottom:12px; }
+  .sec-title .hl { color:var(--gold2); }
+  .sec-sub { text-align:center; color:#b3a892; margin-bottom:44px; }
+  .reveal { opacity:0; transform:translateY(40px); transition:all .8s ease; }
+  .reveal.show { opacity:1; transform:none; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:22px; }
+  .card { position:relative; border-radius:18px; overflow:hidden; min-height:280px; display:flex; align-items:flex-end; border:1px solid #2c2534; transition:transform .35s, border-color .35s; }
+  .card:hover { transform:translateY(-8px); border-color:var(--gold); }
+  .card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .6s; }
+  .card:hover img { transform:scale(1.08); }
+  .card .veil { position:absolute; inset:0; background:linear-gradient(180deg,transparent 35%,rgba(10,7,14,.85)); }
+  .card .info { position:relative; padding:20px; width:100%; }
+  .card h3 { font-size:1.5rem; letter-spacing:1px; color:#fff; }
+  .card p { color:#ddd4c2; font-size:.9rem; margin-top:4px; }
+  .check { list-style:none; max-width:520px; margin:auto; }
+  .check li { padding:16px 6px; border-bottom:1px dashed #2e2738; font-size:1.05rem; display:flex; gap:12px; align-items:flex-start; transition:padding .3s; }
+  .check li:hover { padding-left:18px; color:var(--gold2); }
+  .check .tick { color:var(--gold2); font-weight:800; }
+  .steps { max-width:520px; margin:auto; counter-reset:s; }
+  .step { background:#161119; border:1px solid #2c2534; border-radius:16px; padding:22px 22px 22px 76px; margin-bottom:14px; position:relative; transition:transform .3s, border-color .3s; }
+  .step:hover { transform:translateX(8px); border-color:var(--gold); }
+  .step::before { counter-increment:s; content:counter(s); position:absolute; left:20px; top:50%; transform:translateY(-50%); background:linear-gradient(135deg,var(--gold),#b8862c); font-family:'Bebas Neue'; font-size:1.6rem; width:40px; height:40px; display:flex; align-items:center; justify-content:center; border-radius:12px; color:#1d1607; }
+  .step h3 { font-size:1.15rem; margin-bottom:4px; }
+  .step p { color:#c2b8a2; font-size:.92rem; }
+  .contact-card { background:#161119; border:1px solid #2c2534; border-radius:18px; padding:30px; text-align:center; margin-top:34px; }
+  .contact-card p.addr { color:#c2b8a2; margin-bottom:18px; font-size:1.05rem; }
+  .float { position:fixed; bottom:22px; right:22px; background:linear-gradient(135deg,var(--gold),#b8862c); color:#1d1607; font-weight:800; padding:16px 24px; border-radius:50px; text-decoration:none; box-shadow:0 12px 30px rgba(227,179,76,.5); z-index:50; animation:pulse2 2.4s infinite; }
+  @keyframes pulse2 { 0%,100%{box-shadow:0 12px 30px rgba(227,179,76,.4)} 50%{box-shadow:0 12px 44px rgba(227,179,76,.8)} }
+  footer { text-align:center; padding:44px 24px 90px; color:#7d7466; font-size:.85rem; border-top:1px solid #211a28; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="bg"></div>
+  <span class="kicker">Connecticut State Troubadour</span>
+  <h1>CHARLIE<br>WIDMER</h1>
+  <p class="tag">Singer, songwriter, and music teacher. Live performances and friendly lessons, in person or online.</p>
+  <div>
+    <a class="btn" href="mailto:musictorrent21@gmail.com?subject=Music%20lessons%20or%20booking">🎼 Book or ask about lessons</a>
+    <a class="btn ghost" href="#contact">Get in touch</a>
+  </div>
+</div>
+
+<div class="marquee"><span>Live Music 🎤 &nbsp;·&nbsp; Guitar, Piano &amp; Voice Lessons 🎸 &nbsp;·&nbsp; In Person or Online 💻 &nbsp;·&nbsp; All Ages &amp; Levels 🎵 &nbsp;·&nbsp; Live Music 🎤 &nbsp;·&nbsp; Guitar, Piano &amp; Voice Lessons 🎸 &nbsp;·&nbsp; In Person or Online 💻 &nbsp;·&nbsp; All Ages &amp; Levels 🎵 &nbsp;·&nbsp; </span></div>
+
+<section>
+  <h2 class="sec-title reveal">MUSIC, TWO <span class="hl">WAYS</span></h2>
+  <p class="sec-sub reveal">On stage, and by your side.</p>
+  <div class="grid">
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/278c7070b_generated_image.png" alt="Live performance"><div class="veil"></div><div class="info"><h3>Live Performances</h3><p>Intimate shows, festivals, and special events. Music that moves people.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/051af9228_generated_image.png" alt="Music lessons"><div class="veil"></div><div class="info"><h3>Music Lessons</h3><p>Guitar, piano, and voice. Patient teaching, in person or online.</p></div></div>
+    <div class="card reveal"><img src="https://media.base44.com/images/public/69fe337f9b337a96768da0fd/4a0ea9971_generated_image.png" alt="Festival stage"><div class="veil"></div><div class="info"><h3>Every Stage</h3><p>From cozy venues to festival crowds — every show is personal.</p></div></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">WHY LEARN WITH <span class="hl">CHARLIE</span></h2>
+  <p class="sec-sub reveal">A working musician who loves to teach.</p>
+  <ul class="check reveal">
+    <li><span class="tick">✓</span> Lessons for all ages and levels — total beginners welcome</li>
+    <li><span class="tick">✓</span> Learn guitar, piano, or singing — your choice</li>
+    <li><span class="tick">✓</span> In person, or online from anywhere</li>
+    <li><span class="tick">✓</span> Real experience: decades of writing and performing</li>
+    <li><span class="tick">✓</span> Friendly, patient, and encouraging style</li>
+  </ul>
+</section>
+
+<section>
+  <h2 class="sec-title reveal">HOW TO <span class="hl">BOOK</span></h2>
+  <p class="sec-sub reveal">Simple as a chorus.</p>
+  <div class="steps reveal">
+    <div class="step"><h3>Send a message</h3><p>Email Charlie and say what you're looking for.</p></div>
+    <div class="step"><h3>Plan together</h3><p>Choose your instrument, times, and lesson style.</p></div>
+    <div class="step"><h3>Start playing</h3><p>Fun first lessons, real progress from week one.</p></div>
+    <div class="step"><h3>Keep growing</h3><p>Regular lessons and small wins add up fast.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="sec-title reveal">GET IN <span class="hl">TOUCH</span></h2>
+  <p class="sec-sub reveal">For lessons, bookings, and hello's.</p>
+  <div class="contact-card reveal">
+    <h3 style="font-size:1.6rem; margin-bottom:8px;">CONTACT CHARLIE</h3>
+    <p class="addr">📧 musictorrent21@gmail.com<br>📍 Connecticut — lessons in person or online anywhere</p>
+    <a class="btn" href="mailto:musictorrent21@gmail.com?subject=Music%20lessons%20or%20booking">🎼 Email Charlie</a>
+  </div>
+</section>
+
+<a class="float" href="mailto:musictorrent21@gmail.com?subject=Music%20lessons%20or%20booking">🎼 Say hello</a>
+
+<footer>
+  Charlie Widmer — Singer, Songwriter & Music Teacher, Connecticut<br>
+  Live music · Lessons in person or online
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
